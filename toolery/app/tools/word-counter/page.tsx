@@ -31,6 +31,7 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <ToolShell
+        icon="word-counter"
         eyebrow="Generate"
         title="Word Counter"
         description="Count words, characters, sentences and estimated reading time as you type."

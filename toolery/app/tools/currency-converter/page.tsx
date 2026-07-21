@@ -31,6 +31,7 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <ToolShell
+        icon="currency-converter"
         eyebrow="Convert"
         title="Currency Converter"
         description="Convert Pakistani Rupees to major world currencies with editable exchange rates."

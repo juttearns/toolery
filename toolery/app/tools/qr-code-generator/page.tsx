@@ -31,6 +31,7 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <ToolShell
+        icon="qr-code-generator"
         eyebrow="Generate"
         title="QR Code Generator"
         description="Turn any link or text into a downloadable QR code, with custom colors."

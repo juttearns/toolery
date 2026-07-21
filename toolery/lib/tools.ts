@@ -62,6 +62,66 @@ export const tools: ToolMeta[] = [
     short: "Words, characters, sentences and reading time as you type.",
     category: "generate",
   },
+  {
+    slug: "amount-in-words",
+    name: "Amount in Words",
+    short: "Convert any number into words — perfect for cheques and invoices.",
+    category: "generate",
+  },
+  {
+    slug: "age-calculator",
+    name: "Age Calculator",
+    short: "Find your exact age in years, months and days from your birth date.",
+    category: "local",
+  },
+  {
+    slug: "loan-calculator",
+    name: "Loan / EMI Calculator",
+    short: "Monthly instalment, total interest and payoff breakdown for any loan.",
+    category: "convert",
+  },
+  {
+    slug: "percentage-calculator",
+    name: "Percentage Calculator",
+    short: "Percent of a number, percentage change, and what-percent-is-X-of-Y.",
+    category: "generate",
+  },
+  {
+    slug: "bmi-calculator",
+    name: "BMI Calculator",
+    short: "Body Mass Index from your height and weight, with the healthy range.",
+    category: "local",
+  },
+  {
+    slug: "discount-calculator",
+    name: "Discount Calculator",
+    short: "Final price, amount saved, and stacked discounts in one go.",
+    category: "convert",
+  },
+  {
+    slug: "text-case-converter",
+    name: "Text Case Converter",
+    short: "UPPERCASE, lowercase, Title Case, camelCase, snake_case and more.",
+    category: "generate",
+  },
+  {
+    slug: "color-converter",
+    name: "Color Converter",
+    short: "Convert between HEX, RGB and HSL with a live preview.",
+    category: "convert",
+  },
+  {
+    slug: "tip-calculator",
+    name: "Tip Calculator",
+    short: "Split the bill and tip evenly across any number of people.",
+    category: "generate",
+  },
+  {
+    slug: "date-difference-calculator",
+    name: "Date Difference Calculator",
+    short: "Days, weeks and months between any two dates.",
+    category: "local",
+  },
 ];
 
 export function getTool(slug: string) {

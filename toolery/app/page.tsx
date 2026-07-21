@@ -1,7 +1,9 @@
 import Link from "next/link";
 import GlassCard from "@/components/ui/GlassCard";
 import AdSlot from "@/components/ui/AdSlot";
+import NativeBannerAd from "@/components/ui/NativeBannerAd";
 import { tools, categoryLabel, categoryColor, ToolCategory } from "@/lib/tools";
+import { toolIcons } from "@/lib/icons";
 
 const sections: { id: ToolCategory; heading: string; blurb: string }[] = [
   {
@@ -42,7 +44,9 @@ export default function Home() {
       </section>
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <AdSlot id="ad-home-top" minHeight={100} className="mb-14" />
+        <AdSlot id="ad-home-top" minHeight={100} className="mb-14">
+          <NativeBannerAd />
+        </AdSlot>
       </div>
 
       {sections.map((section) => (
@@ -63,21 +67,33 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {tools
               .filter((t) => t.category === section.id)
-              .map((tool) => (
-                <Link key={tool.slug} href={`/tools/${tool.slug}`}>
-                  <GlassCard className="p-5 h-full">
-                    <span
-                      className={`text-[11px] font-semibold uppercase tracking-wider ${categoryColor[tool.category]}`}
-                    >
-                      {categoryLabel[tool.category]}
-                    </span>
-                    <h3 className="font-display mt-2 text-lg font-semibold text-fg">
-                      {tool.name}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted">{tool.short}</p>
-                  </GlassCard>
-                </Link>
-              ))}
+              .map((tool) => {
+                const Icon = toolIcons[tool.slug as keyof typeof toolIcons];
+                return (
+                  <Link key={tool.slug} href={`/tools/${tool.slug}`}>
+                    <GlassCard className="p-5 h-full">
+                      <div className="flex items-start justify-between gap-3">
+                        <span
+                          className={`text-[11px] font-semibold uppercase tracking-wider ${categoryColor[tool.category]}`}
+                        >
+                          {categoryLabel[tool.category]}
+                        </span>
+                        {Icon && (
+                          <span
+                            className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/[0.06] ${categoryColor[tool.category]}`}
+                          >
+                            <Icon className="h-5 w-5" />
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="font-display mt-2 text-lg font-semibold text-fg">
+                        {tool.name}
+                      </h3>
+                      <p className="mt-2 text-sm text-muted">{tool.short}</p>
+                    </GlassCard>
+                  </Link>
+                );
+              })}
           </div>
 
           {section.id === "convert" && (

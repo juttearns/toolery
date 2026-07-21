@@ -31,6 +31,7 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <ToolShell
+        icon="zakat-calculator"
         eyebrow="Local"
         title="Zakat Calculator"
         description="Calculate your annual Zakat on cash, gold, silver and savings using the Nisab threshold."

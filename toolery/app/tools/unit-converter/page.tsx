@@ -31,6 +31,7 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <ToolShell
+        icon="unit-converter"
         eyebrow="Convert"
         title="Unit Converter"
         description="Convert length, weight, temperature, area and volume between metric and imperial units."

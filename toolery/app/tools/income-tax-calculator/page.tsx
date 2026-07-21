@@ -31,6 +31,7 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <ToolShell
+        icon="income-tax-calculator"
         eyebrow="Local"
         title="Pakistan Income Tax Calculator (FY 2026-27)"
         description="Estimate your monthly and annual income tax on salary using the latest FBR slabs for FY 2026-27."

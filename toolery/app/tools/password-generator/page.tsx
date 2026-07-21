@@ -31,6 +31,7 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <ToolShell
+        icon="password-generator"
         eyebrow="Generate"
         title="Password Generator"
         description="Generate strong, random passwords with full control over length and character types."
