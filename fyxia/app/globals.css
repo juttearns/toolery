@@ -1,0 +1,250 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #05060d;
+  --bg-2: #0a0e1c;
+  --fg: #eef2f9;
+  --muted: #93a0b8;
+  --glass: rgba(255, 255, 255, 0.055);
+  --glass-strong: rgba(255, 255, 255, 0.09);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --accent-teal: #2dd4bf;
+  --accent-violet: #a78bfa;
+  --accent-emerald: #34d399;
+  --accent-amber: #fbbf24;
+
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-data: var(--font-plex-mono);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+  --color-teal: var(--accent-teal);
+  --color-violet: var(--accent-violet);
+  --color-emerald: var(--accent-emerald);
+  --color-amber: var(--accent-amber);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-data);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Liquid glass surface ---------- */
+.glass {
+  background: linear-gradient(180deg, var(--glass-strong), var(--glass));
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.08) inset,
+    0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.glass-hover {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.glass-hover:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.12) inset,
+    0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* ---------- Signature: liquid blob field ---------- */
+.liquid-field {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: radial-gradient(120% 120% at 15% 0%, #0d1230 0%, var(--bg) 55%);
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.blob-1 {
+  width: 46vw;
+  height: 46vw;
+  top: -12vw;
+  left: -8vw;
+  background: radial-gradient(circle at 35% 35%, var(--accent-teal), transparent 70%);
+  animation: drift-a 22s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 38vw;
+  height: 38vw;
+  bottom: -10vw;
+  right: -6vw;
+  background: radial-gradient(circle at 60% 40%, var(--accent-violet), transparent 70%);
+  animation: drift-b 26s ease-in-out infinite;
+}
+
+.blob-3 {
+  width: 28vw;
+  height: 28vw;
+  top: 30%;
+  right: 18%;
+  background: radial-gradient(circle at 50% 50%, var(--accent-emerald), transparent 70%);
+  animation: drift-c 30s ease-in-out infinite;
+  opacity: 0.35;
+}
+
+@keyframes drift-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(6vw, 8vw) scale(1.15); }
+}
+
+@keyframes drift-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-5vw, -7vw) scale(1.1); }
+}
+
+@keyframes drift-c {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-4vw, 5vw) scale(1.2); }
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.035;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob-1, .blob-2, .blob-3 {
+    animation: none;
+  }
+}
+
+/* Utility: numeric/data readouts use the mono/data face */
+.data-num {
+  font-family: var(--font-data), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="range"] {
+  accent-color: var(--accent-teal);
+}
+
+/* Blog article typography */
+.article h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.375rem;
+  color: var(--fg);
+  margin-top: 2.2em;
+  margin-bottom: 0.6em;
+  letter-spacing: -0.01em;
+}
+.article h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--fg);
+  margin-top: 1.8em;
+  margin-bottom: 0.5em;
+}
+.article p {
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 1.15em;
+  font-size: 1rem;
+}
+.article strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+.article ul,
+.article ol {
+  color: var(--muted);
+  margin: 0 0 1.15em 1.4em;
+  line-height: 1.8;
+}
+.article ul {
+  list-style: disc;
+}
+.article ol {
+  list-style: decimal;
+}
+.article li {
+  margin-bottom: 0.4em;
+}
+.article a {
+  color: var(--accent-teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.article blockquote {
+  border-left: 2px solid var(--glass-border);
+  padding-left: 1rem;
+  color: var(--muted);
+  font-style: italic;
+  margin: 1.5em 0;
+}
+.article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.4em 0;
+  font-size: 0.9rem;
+}
+.article th,
+.article td {
+  text-align: left;
+  padding: 0.6em 0.8em;
+  border-bottom: 1px solid var(--glass-border);
+}
+.article th {
+  color: var(--fg);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.article td {
+  color: var(--muted);
+}
+.article td:first-child,
+.article th:first-child {
+  color: var(--fg);
+}
+
+/* Safety cap: injected ad-network markup (images, iframes) must never
+   exceed the width of whatever container it's placed in. */
+[id^="ad-"] img,
+[id^="ad-"] iframe,
+[id^="container-"] img,
+[id^="container-"] iframe {
+  max-width: 100%;
+  height: auto;
+}
